@@ -5,6 +5,8 @@
 package projectcardsclient;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
@@ -36,7 +38,17 @@ public class Login extends JFrame {
     /*
      * A kapcsolatbeállítás ablakot megnyító gomb
      */
-    private final Button btSettings = new Button("Beállítások");
+    private final Button btSettings = new Button("Beállítások"){
+        {
+            addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    dialogConSettings.setVisible(true); //Kattintásra láthatóvá teszi a kapcsolatbeállítások ablakot
+                }
+            });
+        }
+    };
     
     /*
      * A Logo panelje

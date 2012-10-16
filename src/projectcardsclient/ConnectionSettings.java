@@ -175,7 +175,7 @@ public class ConnectionSettings extends JDialog {
    private void initDialog() {
        
        setTitle("Kapcsolatbeállítások"); //A dialógus cimkéjének beállítása
-       setIconImage(RM.getIconImage()); //A dialógus ikonképének beállítása
+       setIconImage(RM.getConfigImage()); //A dialógus ikonképének beállítása
        setLayout(new BorderLayout()); //Az elrendezés beállítása
        
        add(pnSettings, BorderLayout.NORTH);

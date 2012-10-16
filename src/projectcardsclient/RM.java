@@ -44,6 +44,13 @@ public class RM {
     }
     
     /*
+     * Visszaadja a "Beállítások" ikonját
+     */
+    public static Image getConfigImage() {
+        return getImage("config.png");
+    }
+    
+    /*
      * A képfájlok beolvasását szolgáló metódus, ezután "Image" formában lesznek
      */
     private static Image getImage(String name) {

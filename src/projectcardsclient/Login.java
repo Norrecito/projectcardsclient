@@ -16,9 +16,14 @@ import javax.swing.*;
 public class Login extends JFrame {
     
     /*
-     * A kapcsolatbeállítás ablak
+     * A konfiguráció
      */
-    private final ConnectionSettings dialogConSettings = new ConnectionSettings(this);
+    private Config conf = Config.getInstance();
+    
+    /*
+     * A kapcsolatbeállítás ablak. Átadom neki a konfigurációt
+     */
+    private final ConnectionSettings dialogConSettings = new ConnectionSettings(this, conf);
     
     /*
      * A felhasználónév beírásáhóz szükséges szövegmező
@@ -120,8 +125,9 @@ public class Login extends JFrame {
         }
     };
     
-    public Login() {
-    
+    public Login(Config conf) {
+        
+        this.conf =conf;  //A konfiguráció beállítása
         initComponents(); //Komponensek inicialízálása
         initWindow();     //Ablak inicialízálása
     

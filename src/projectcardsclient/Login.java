@@ -18,12 +18,12 @@ public class Login extends JFrame {
     /*
      * A konfiguráció
      */
-    private Config conf = Config.getInstance();
-    
+    //private Config conf = Config.getInstance();
+    private final Config conf;
     /*
      * A kapcsolatbeállítás ablak. Átadom neki a konfigurációt
      */
-    private final ConnectionSettings dialogConSettings = new ConnectionSettings(this, conf);
+    private ConnectionSettings dialogConSettings;
     
     /*
      * A felhasználónév beírásáhóz szükséges szövegmező
@@ -128,6 +128,7 @@ public class Login extends JFrame {
     public Login(Config conf) {
         
         this.conf =conf;  //A konfiguráció beállítása
+        dialogConSettings = new ConnectionSettings(this, conf);
         initComponents(); //Komponensek inicialízálása
         initWindow();     //Ablak inicialízálása
     

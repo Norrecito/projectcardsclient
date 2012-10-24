@@ -51,6 +51,27 @@ public class RM {
     }
     
     /*
+     * Visszaadja a "Szerver hitelesítés" ikonját
+     */
+    public static Image getServerImage() {
+        return getImage("server.png");
+    }
+    
+    /*
+     * Viszaadja a "Töltés" ikonját
+     */
+    public static Icon getLoadingIcon() {
+        return getIcon("loading.gif");
+    }
+    
+    /*
+     * Visszaadja az "Ellenőrzés" ikonját
+     */
+    public static Icon getCheckIcon() {
+        return getIcon("check.png");
+    }
+    
+    /*
      * A képfájlok beolvasását szolgáló metódus, ezután "Image" formában lesznek
      */
     private static Image getImage(String name) {

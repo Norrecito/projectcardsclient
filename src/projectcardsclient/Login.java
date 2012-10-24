@@ -5,8 +5,7 @@
 package projectcardsclient;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import javax.swing.*;
 
 /**
@@ -18,12 +17,27 @@ public class Login extends JFrame {
     /*
      * A konfiguráció
      */
-    //private Config conf = Config.getInstance();
     private final Config conf;
+    
+    /*
+     * A felhasználónév és jelszó mezőhőz tartozó figyelő
+     */
+    private KeyListener btEnabler = new KeyAdapter() {
+    @Override
+            public void keyReleased(KeyEvent e) {
+                checkButton();
+            }
+   };
+    
     /*
      * A kapcsolatbeállítás ablak. Átadom neki a konfigurációt
      */
     private ConnectionSettings dialogConSettings;
+    
+    /*
+     * A szerver hitelesítés dialógus
+     */
+    private ServerAuthentication dialogServAuth = new ServerAuthentication(this);
     
     /*
      * A felhasználónév beírásáhóz szükséges szövegmező
@@ -38,7 +52,18 @@ public class Login extends JFrame {
     /*
      * A bejelentkezéshez szükséges gomb
      */
-    private final JButton btLogin = new JButton("Bejelentkezés");
+    private final JButton btLogin = new JButton("Bejelentkezés"){
+        {
+            setEnabled(false); //Alapértelmezetten a gomb le van tiltva
+            addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    dialogServAuth.setVisible(true);
+                }
+            });
+        }
+    };
     
     /*
      * A kapcsolatbeállítás ablakot megnyító gomb
@@ -145,6 +170,9 @@ public class Login extends JFrame {
        
        tfUsername.setPreferredSize(new Dimension(120,25)); //Szövegmező átméretezése
        pfPassword.setPreferredSize(new Dimension(120,25)); //Jelszómező átméretezése
+       
+       tfUsername.addKeyListener(btEnabler); //A figyelő hozzáadása a felhasználónév mezőhőz
+       pfPassword.addKeyListener(btEnabler); //A figyelő hozzáadása a jelszó mezőhőz
     }
     
     private void initWindow(){
@@ -163,5 +191,16 @@ public class Login extends JFrame {
        setLocationRelativeTo(null); //Az ablak középen jelenjen meg
        setResizable(false); //Nem lehet átméretezni
     
-    } 
+    }
+    
+    /*
+     * A "Bejelentkezés" gomb engedélyezését, illetve letíltását végző metódus
+     */
+    private void checkButton() {
+       
+       int u = tfUsername.getText().length();
+       int p = pfPassword.getPassword().length;
+       btLogin.setEnabled(u >= 3 && u <=20 && p >= 6 && p <= 20); 
+    
+    }
 }

@@ -5,6 +5,8 @@
 package projectcardsclient;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -44,6 +46,16 @@ public class ServerAuthentication extends JDialog {
     private final Button btCancel = new Button("Mégse"){
         {
             setEnabled(false); //Alapértelmezetten le van tiltva a gomb
+            addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    
+                    hideDialog();
+                    resetDialog();
+                    
+                }
+            });
         }
     };
     
@@ -212,5 +224,12 @@ public class ServerAuthentication extends JDialog {
         lbConImage.setIcon(RM.getLoadingIcon());
         lbAuthImage.setIcon(RM.getLoadingIcon());
         lbCharImage.setIcon(RM.getLoadingIcon());
+    }
+    
+    /*
+     * A dialogús elrejtését végző metódus
+     */
+    private void hideDialog(){
+        setVisible(false);
     }
 }

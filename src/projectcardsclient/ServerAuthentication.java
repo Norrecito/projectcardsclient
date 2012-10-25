@@ -197,4 +197,20 @@ public class ServerAuthentication extends JDialog {
         lbCharImage.setIcon(RM.getFailedIcon());  //A hozzá tartozó felirat ikonjának átálítása
         btCancel.setEnabled(true); //A "Mégse" gomb engedélyezése
     }
+    
+    /*
+     * Visszaállítja a dialógus ablakot az alap állapotába
+     */
+    private void resetDialog(){
+        
+        //Feliratok szövegeinek visszaállítás az alapértelmezetre
+        lbCon.setText("Kapcsolodás a szerverhez...");
+        lbAuth.setText("Adatok hitelesítése...");
+        lbChar.setText("Karakterlista betöltése...");
+        
+        //A hozzájuk tartozó feliratok alapértelmezett ikonjainak visszaállítása
+        lbConImage.setIcon(RM.getLoadingIcon());
+        lbAuthImage.setIcon(RM.getLoadingIcon());
+        lbCharImage.setIcon(RM.getLoadingIcon());
+    }
 }

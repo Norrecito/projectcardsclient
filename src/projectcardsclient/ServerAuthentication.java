@@ -101,7 +101,7 @@ public class ServerAuthentication extends JDialog {
     private final JPanel pnButton = new JPanel(){
         {
             setLayout(new FlowLayout()); //Az elrendezés beállítása
-            add(btCancel);
+            add(btCancel); //A "Mégse" gomb hozzáadása
         }
     };
     
@@ -113,11 +113,12 @@ public class ServerAuthentication extends JDialog {
        
    }
     private void initComponents() {
-      
-      lbCon.setPreferredSize(new Dimension(180,25));  
+      //Komponensek méreteinek beállítása
+      lbCon.setPreferredSize(new Dimension(180,25));   
       lbAuth.setPreferredSize(new Dimension(180,25));  
       lbChar.setPreferredSize(new Dimension(180,25));
       
+      //A hozzájuk tartozó felirat alapértelmezett ikonjainak beállítása
       lbText.setIcon(RM.getCheckIcon());
       lbConImage.setIcon(RM.getLoadingIcon());
       lbAuthImage.setIcon(RM.getLoadingIcon());
@@ -138,5 +139,62 @@ public class ServerAuthentication extends JDialog {
       pack(); //Tömörítés a komponensek méretétől fűggöen
       setLocationRelativeTo(null); //Az ablakot a képernyő közepére helyezi
       setResizable(false); //A dialogús ablak átméretezésének letíltása
+    }
+    
+    /*
+     * Amennyiben sikerült csatlakozni a szerverhez
+     */
+    private void connectionSucceed() {
+        
+        lbCon.setText("Kapcsolodva a szerverhez"); //A kapcsolodás állapotát jelző felirat beállítása
+        lbConImage.setIcon(RM.getSucceedIcon());  //A hozzá tartozó felirat ikonjának átálítása
+    }
+    
+    /*
+     * Amennyiben nem sikerült csatlakozni a szerverhez
+     */
+    private void connectionFailed() {
+        
+        lbCon.setText("Nem sikerült kapcsolodni a szerverhez!"); //A kapcsolodás állapotát jelző felirat beállítása
+        lbConImage.setIcon(RM.getFailedIcon()); //A hozzá tartozó felirat ikonjának átálítása
+        btCancel.setEnabled(true); //A "Mégse" gomb engedélyezése
+    }
+    
+    /*
+     * Amennyiben a beírt jelszó és felhasználónév megfelelő
+     */
+    private void dataCorrect() {
+       
+       lbAuth.setText("Adatok hitelesítve"); //Az adatok hitelesítésének állapotát jelző felirat beállítása
+       lbAuthImage.setIcon(RM.getSucceedIcon());  //A hozzá tartozó felirat ikonjának átálítása
+    }
+    
+    /*
+     * Amennyiben a beírt jelszó és felhasználónév nem megfelelő (Azaz a hitelesítés alapján nem jó)
+     */
+    private void dataIncorrect() {
+      
+      lbAuth.setText("Az adatok nem megfelelőek!"); //Az adatok hitelesítésének állapotát jelző felirat beállítása
+      lbAuthImage.setIcon(RM.getFailedIcon());  //A hozzá tartozó felirat ikonjának átálítása
+      btCancel.setEnabled(true); //A "Mégse" gomb engedélyezése
+    }
+    
+    /*
+     * Amennyiben a karakterlista betöltése sikerült
+     */
+    private void charlistLoadingSucceed() {
+        
+        lbChar.setText("Karakterlista betöltve"); //A karakterlista betöltésének állapotát jelző felirat beállítása
+        lbCharImage.setIcon(RM.getSucceedIcon());  //A hozzá tartozó felirat ikonjának átálítása
+    }
+    
+    /*
+     * Amennyiben a karakterlista betöltése nem sikerült
+     */
+    private void charlistLoadingFailed() {
+        
+        lbChar.setText("Karakterlista betöltése nem sikerült!"); //A karakterlista betöltésének állapotát jelző felirat beállítása
+        lbCharImage.setIcon(RM.getFailedIcon());  //A hozzá tartozó felirat ikonjának átálítása
+        btCancel.setEnabled(true); //A "Mégse" gomb engedélyezése
     }
 }

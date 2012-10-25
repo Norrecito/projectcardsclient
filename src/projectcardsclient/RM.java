@@ -72,6 +72,20 @@ public class RM {
     }
     
     /*
+     * Egy piros "X" (Nem sikerült) ikont ad vissza
+     */
+    public static Icon getFailedIcon(){
+        return getIcon("failed.png");
+    }
+    
+    /*
+     * Egy zöld pipa (Sikerült) ikont ad vissza  
+     */
+    public static Icon getSucceedIcon(){
+        return getIcon("succeed.png");
+    }
+    
+    /*
      * A képfájlok beolvasását szolgáló metódus, ezután "Image" formában lesznek
      */
     private static Image getImage(String name) {

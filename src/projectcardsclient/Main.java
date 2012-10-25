@@ -15,6 +15,32 @@ public class Main {
      */
     private static final Config conf = Config.getInstance();
     
+    /*
+     * A logikai érték ami jelző van-e folyamatban kapcsolódás
+     */
+    private static boolean isConnecting=false;
+    
+    /*
+     * A szerverhez való kapcsolódást elvégző metódus
+     */
+    public static void connectToServer(String username, String password) {
+        
+    }
+    
+    /*
+     * A szerverről való lekapcsolodást elvégző metódus
+     */
+    public static void disconnectFromServer(){
+        
+    }
+    
+    /*
+     * A jelenlegi kapcsolat bontását és az újrakapcsolodást elvégző metódus
+     */
+    public static void reconnectToServer(){
+        
+    }
+    
     /**
      * @param args the command line arguments
      */

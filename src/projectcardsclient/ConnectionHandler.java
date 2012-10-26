@@ -25,7 +25,7 @@ public class ConnectionHandler {
     /*
      * Segédváltozók
      */
-    String sentence="Valami";
+    String sentence="A kliens üzent!";
     String modifiedSentence;
     
     /*
@@ -64,7 +64,7 @@ public class ConnectionHandler {
         
         clientSocket.close();
         
-        connected=false;
+        
         
      }
     
@@ -72,7 +72,7 @@ public class ConnectionHandler {
      * A szerverről való lekapcsolódást elvégző metódus
      */
     public void disconnect() {
-        
+        connected=false;
     }
     
     /*

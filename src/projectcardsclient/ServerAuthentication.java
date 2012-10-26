@@ -126,9 +126,9 @@ public class ServerAuthentication extends JDialog {
    }
     private void initComponents() {
       //Komponensek méreteinek beállítása
-      lbCon.setPreferredSize(new Dimension(180,25));   
-      lbAuth.setPreferredSize(new Dimension(180,25));  
-      lbChar.setPreferredSize(new Dimension(180,25));
+      lbCon.setPreferredSize(new Dimension(250,25));   
+      lbAuth.setPreferredSize(new Dimension(250,25));  
+      lbChar.setPreferredSize(new Dimension(250,25));
       
       //A hozzájuk tartozó felirat alapértelmezett ikonjainak beállítása
       lbText.setIcon(RM.getCheckIcon());
@@ -147,7 +147,7 @@ public class ServerAuthentication extends JDialog {
       add(pnButton, BorderLayout.SOUTH);
       
       setDefaultCloseOperation(HIDE_ON_CLOSE); //Az "X"-re kattintva elrejtődik az ablak
-      setModalityType(ModalityType.APPLICATION_MODAL); //A dialogús ablak módális lesz
+      //setModalityType(ModalityType.APPLICATION_MODAL); //A dialogús ablak módális lesz
       pack(); //Tömörítés a komponensek méretétől fűggöen
       setLocationRelativeTo(null); //Az ablakot a képernyő közepére helyezi
       setResizable(false); //A dialogús ablak átméretezésének letíltása

@@ -218,7 +218,7 @@ public class Login extends JFrame {
      */
     public void exceptionIO() {
       dialogServAuth.connectionFailed();
-      JOptionPane.showMessageDialog(this,"IO hiba!");
+      JOptionPane.showMessageDialog(this,"A szerver nem található!");
     }
     
     /*

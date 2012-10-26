@@ -25,8 +25,13 @@ public class ConnectionHandler {
     /*
      * Segédváltozók
      */
-    String sentence;
+    String sentence="Valami";
     String modifiedSentence;
+    
+    /*
+     * Van-e kapcsolat jelenleg
+     */
+    private boolean connected=false;
     
     /*
      * Konstruktor
@@ -37,9 +42,9 @@ public class ConnectionHandler {
     
     /*
      * A szerverhez való kapcsolódást elvégző metódus
-     * egyenlőre csak teszt jellegű
+     * egyenlőre csak erőssen teszt jellegű
      */
-    public void connect() throws UnknownHostException, IOException {
+    public void connect(String username, String password) throws UnknownHostException, IOException {
         
         BufferedReader inFromUser = new BufferedReader( new InputStreamReader(System.in));
        
@@ -54,7 +59,12 @@ public class ConnectionHandler {
         outToServer.writeBytes(sentence + '\n');
         modifiedSentence = inFromServer.readLine();
         System.out.println("Szerver üzenete: " + modifiedSentence);
-        clientSocket.close();    
+        
+        connected=true;
+        
+        clientSocket.close();
+        
+        connected=false;
         
      }
     
@@ -63,5 +73,12 @@ public class ConnectionHandler {
      */
     public void disconnect() {
         
+    }
+    
+    /*
+     * Visszaadja van-e kiépítve jelenleg kapcsolat a kliens és a szerver között
+     */
+    public boolean isConnected() {
+        return connected;
     }
 }   

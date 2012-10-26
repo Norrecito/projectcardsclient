@@ -10,7 +10,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
- * Az erőforrás kezelő osztály
+ * A kliens erőforrás kezelő osztálya
  * @author Norrecito
  */
 public class RM {

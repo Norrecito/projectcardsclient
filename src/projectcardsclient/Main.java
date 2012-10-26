@@ -6,8 +6,6 @@ package projectcardsclient;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -40,7 +38,7 @@ public class Main {
      */
     public static void connectToServer(String username, String password) {
         try {
-            conhandler.connect(); //Megkéri a kapcsolatkiépítéséért felelős osztály, hogy kezdeményezze meg a kapcsolódást
+            conhandler.connect(username,password); //Megkéri a kapcsolatkiépítéséért felelős osztály, hogy kezdeményezze meg a kapcsolódást
             /*
              * Amennyiben sikerült kapcsolódni üzen a "Login" osztálynak hogy a folyamatokat jelző dialóguson állítsa sikeresre a kapcsolódást
              */

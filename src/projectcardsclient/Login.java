@@ -203,4 +203,27 @@ public class Login extends JFrame {
        btLogin.setEnabled(u >= 3 && u <=20 && p >= 6 && p <= 20); 
     
     }
+    
+    /*
+     * Amennyiben "Ismeretlen hoszt" kivétel keletkezik
+     */
+    public void exceptionUnkownHost() {
+      dialogServAuth.connectionFailed();
+      JOptionPane.showMessageDialog(this,"Ismeretlen hoszt!");
+    }
+    
+    /*
+     * Amennyiben "IO" kivétel keletkezik
+     */
+    public void exceptionIO() {
+      dialogServAuth.connectionFailed();
+      JOptionPane.showMessageDialog(this,"IO hiba!");
+    }
+    
+    /*
+     * Sikerült kapcsolodni a szerverhez
+     */
+    public void connectedToServer() {
+      dialogServAuth.connectionSucceed();  
+    }
 }

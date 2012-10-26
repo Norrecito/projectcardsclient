@@ -4,6 +4,11 @@
  */
 package projectcardsclient;
 
+import java.io.IOException;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Norrecito
@@ -21,17 +26,47 @@ public class Main {
     private static boolean isConnecting=false;
     
     /*
-     * A szerverhez való kapcsolódást elvégző metódus
+     * A szerverhez való kapcsolodást, illetve lekapcsolodást végző osztály
+     */
+    private static final ConnectionHandler conhandler = new ConnectionHandler(conf);
+    
+    /*
+     * A bejelentkező ablak annak minden metodusával
+     */
+    public static Login loginwindow;
+    
+    /*
+     * A szerverhez való kapcsolódást kezdeményező metódus
      */
     public static void connectToServer(String username, String password) {
-        
+        try {
+            conhandler.connect(); //Megkéri a kapcsolatkiépítéséért felelős osztály, hogy kezdeményezze meg a kapcsolódást
+            /*
+             * Amennyiben sikerült kapcsolódni üzen a "Login" osztálynak hogy a folyamatokat jelző dialóguson állítsa sikeresre a kapcsolódást
+             */
+            loginwindow.connectedToServer();
+        } catch (UnknownHostException ex) {
+            /*
+             * "Ismeretlen hoszt" kivétel kezelése
+             * Üzen a "Login" osztálynak hogy az a folyamatokat jelző dialógusán állítsa a kapcsolódást sikertelenre
+             */
+            loginwindow.exceptionUnkownHost();
+            //Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            /*
+             * "IO" kivétel kezelése
+             * Üzen a "Login" osztálynak hogy az a folyamatokat jelző dialógusán állítsa a kapcsolódást sikertelenre
+             */
+            loginwindow.exceptionIO();
+            //Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /*
-     * A szerverről való lekapcsolodást elvégző metódus
+     * A szerverről való lekapcsolodást kezdeményező metódus
      */
     public static void disconnectFromServer(){
-        
+        conhandler.disconnect(); //Megkéri a kapcsolatkiépítéséért felelős osztály, hogy szüntesse meg a fenálló kapcsolatot
     }
     
     /*
@@ -45,8 +80,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        System.out.println(conf);
-        Login loginwindow = new Login(conf);
+        
+        System.out.println(conf); //Teszt jellegüen kiírja a jelenlegi konfigurációt (IP, port)
+        loginwindow = new Login(conf);
     }
 }

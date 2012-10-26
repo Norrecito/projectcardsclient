@@ -156,7 +156,7 @@ public class ServerAuthentication extends JDialog {
     /*
      * Amennyiben sikerült csatlakozni a szerverhez
      */
-    private void connectionSucceed() {
+    public void connectionSucceed() {
         
         lbCon.setText("Kapcsolodva a szerverhez"); //A kapcsolodás állapotát jelző felirat beállítása
         lbConImage.setIcon(RM.getSucceedIcon());  //A hozzá tartozó felirat ikonjának átálítása
@@ -165,7 +165,7 @@ public class ServerAuthentication extends JDialog {
     /*
      * Amennyiben nem sikerült csatlakozni a szerverhez
      */
-    private void connectionFailed() {
+    public void connectionFailed() {
         
         lbCon.setText("Nem sikerült kapcsolodni a szerverhez!"); //A kapcsolodás állapotát jelző felirat beállítása
         lbConImage.setIcon(RM.getFailedIcon()); //A hozzá tartozó felirat ikonjának átálítása
@@ -175,7 +175,7 @@ public class ServerAuthentication extends JDialog {
     /*
      * Amennyiben a beírt jelszó és felhasználónév megfelelő
      */
-    private void dataCorrect() {
+    public void dataCorrect() {
        
        lbAuth.setText("Adatok hitelesítve"); //Az adatok hitelesítésének állapotát jelző felirat beállítása
        lbAuthImage.setIcon(RM.getSucceedIcon());  //A hozzá tartozó felirat ikonjának átálítása
@@ -184,7 +184,7 @@ public class ServerAuthentication extends JDialog {
     /*
      * Amennyiben a beírt jelszó és felhasználónév nem megfelelő (Azaz a hitelesítés alapján nem jó)
      */
-    private void dataIncorrect() {
+    public void dataIncorrect() {
       
       lbAuth.setText("Az adatok nem megfelelőek!"); //Az adatok hitelesítésének állapotát jelző felirat beállítása
       lbAuthImage.setIcon(RM.getFailedIcon());  //A hozzá tartozó felirat ikonjának átálítása
@@ -194,7 +194,7 @@ public class ServerAuthentication extends JDialog {
     /*
      * Amennyiben a karakterlista betöltése sikerült
      */
-    private void charlistLoadingSucceed() {
+    public void charlistLoadingSucceed() {
         
         lbChar.setText("Karakterlista betöltve"); //A karakterlista betöltésének állapotát jelző felirat beállítása
         lbCharImage.setIcon(RM.getSucceedIcon());  //A hozzá tartozó felirat ikonjának átálítása
@@ -203,7 +203,7 @@ public class ServerAuthentication extends JDialog {
     /*
      * Amennyiben a karakterlista betöltése nem sikerült
      */
-    private void charlistLoadingFailed() {
+    public void charlistLoadingFailed() {
         
         lbChar.setText("Karakterlista betöltése nem sikerült!"); //A karakterlista betöltésének állapotát jelző felirat beállítása
         lbCharImage.setIcon(RM.getFailedIcon());  //A hozzá tartozó felirat ikonjának átálítása

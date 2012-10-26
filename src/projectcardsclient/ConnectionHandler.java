@@ -10,8 +10,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * A szerverhez való kapcsolodást elvégző osztály
@@ -39,6 +37,7 @@ public class ConnectionHandler {
     
     /*
      * A szerverhez való kapcsolódást elvégző metódus
+     * egyenlőre csak teszt jellegű
      */
     public void connect() throws UnknownHostException, IOException {
         
@@ -51,7 +50,11 @@ public class ConnectionHandler {
         
         DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
         BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            
+        sentence = inFromUser.readLine();
+        outToServer.writeBytes(sentence + '\n');
+        modifiedSentence = inFromServer.readLine();
+        System.out.println("Szerver üzenete: " + modifiedSentence);
+        clientSocket.close();    
         
      }
     

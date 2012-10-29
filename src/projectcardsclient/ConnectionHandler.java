@@ -25,7 +25,7 @@ public class ConnectionHandler {
     /*
      * Segédváltozók
      */
-    String sentence="A kliens üzent!";
+    String sentence;
     String modifiedSentence;
     
     /*
@@ -55,6 +55,7 @@ public class ConnectionHandler {
         
         DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
         BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        System.out.print("Üzenet beolvasása: ");
         sentence = inFromUser.readLine();
         outToServer.writeBytes(sentence + '\n');
         modifiedSentence = inFromServer.readLine();

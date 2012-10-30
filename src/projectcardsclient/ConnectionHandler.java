@@ -4,10 +4,7 @@
  */
 package projectcardsclient;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -25,8 +22,8 @@ public class ConnectionHandler {
     /*
      * Segédváltozók
      */
-    String sentence;
-    String modifiedSentence;
+    String sentence; //kliens üzeni...
+    String modifiedSentence; //szerver válasza
     
     /*
      * Van-e kapcsolat jelenleg
@@ -53,7 +50,7 @@ public class ConnectionHandler {
         */
         Socket clientSocket = new Socket(conf.getIP(), conf.getPort());
         
-        DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
+        ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
         BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         System.out.print("Üzenet beolvasása: ");
         sentence = inFromUser.readLine();

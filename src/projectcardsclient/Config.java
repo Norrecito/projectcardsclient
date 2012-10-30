@@ -7,7 +7,7 @@ package projectcardsclient;
 import java.io.*;
 
 /**
- * A konfigurációs beállításokat visszaadó osztály (Szerver IP címe, Port)
+ * A klienshez tartozó konfigurációs beállításokat visszaadó osztály (Szerver IP címe, Port)
  * -A konfigurációt egy fájlból olvassa ki, ami a program gyökérében található
  * -A változtatásokat ugyanebbe a fájlba elmenti ha arra szükség van 
  * 
@@ -18,7 +18,7 @@ public class Config implements Serializable {
     /*
     * Az alapértelmezett beállítások deklarálása
     */
-    private int Port =1192;
+    private int Port =6789;
     private String IP ="192.168.2.1";
     
     /*

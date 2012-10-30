@@ -66,7 +66,16 @@ public class Main {
      * A szerverről való lekapcsolodást kezdeményező metódus
      */
     public static void disconnectFromServer(){
-        conhandler.disconnect(); //Megkéri a kapcsolatkiépítéséért felelős osztály, hogy szüntesse meg a fenálló kapcsolatot
+        try {
+            conhandler.disconnect(); //Megkéri a kapcsolatkiépítéséért felelős osztály, hogy szüntesse meg a fenálló kapcsolatot
+        } catch (IOException ex) {
+            /*
+             * "IO" kivétel kezelése
+             * Üzen a "Login" osztálynak hogy az a folyamatokat jelző dialógusán állítsa a kapcsolódást sikertelenre
+             */
+            loginwindow.exceptionIO();
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /*

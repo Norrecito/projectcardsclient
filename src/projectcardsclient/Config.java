@@ -19,7 +19,7 @@ public class Config implements Serializable {
     * Az alapértelmezett beállítások deklarálása
     */
     private int Port =6789;
-    private String IP ="192.168.2.1";
+    private String IP ="localhost";
     
     /*
      * A fájl ahova mentésre kerülnek a beállítások

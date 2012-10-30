@@ -51,11 +51,11 @@ public class ConnectionHandler {
         Socket clientSocket = new Socket(conf.getIP(), conf.getPort());
         
         ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
-        BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        ObjectInputStream inFromServer = new ObjectInputStream(clientSocket.getInputStream());
         System.out.print("Üzenet beolvasása: ");
         sentence = inFromUser.readLine();
-        outToServer.writeBytes(sentence + '\n');
-        modifiedSentence = inFromServer.readLine();
+        outToServer.writeUTF(sentence + '\n');
+        modifiedSentence = inFromServer.readUTF();
         System.out.println("Szerver üzenete: " + modifiedSentence);
         
         connected=true;

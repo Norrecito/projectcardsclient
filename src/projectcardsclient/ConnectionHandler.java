@@ -22,8 +22,19 @@ public class ConnectionHandler {
     /*
      * Segédváltozók
      */
-    String sentence; //kliens üzeni...
-    String modifiedSentence; //szerver válasza
+    private String sentence; //kliens üzeni...
+    private String modifiedSentence; //szerver válasza
+    
+    /*
+     * A Socket
+     */
+    private Socket clientSocket;
+    
+    /*
+     * A ki és bemeneti csatorna 
+     */
+    ObjectOutputStream outToServer;
+    ObjectInputStream inFromServer;
     
     /*
      * Van-e kapcsolat jelenleg
@@ -48,10 +59,12 @@ public class ConnectionHandler {
        /*
         * Socket létrehozása, és az aktuális konguráció alapján az IP és a port beállítása hozzá
         */
-        Socket clientSocket = new Socket(conf.getIP(), conf.getPort());
-        
-        ObjectOutputStream outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
-        ObjectInputStream inFromServer = new ObjectInputStream(clientSocket.getInputStream());
+        clientSocket = createSocket(conf.getIP(),conf.getPort());
+        /*
+         * A ki és bemeneti adatcsatorna létrehozása
+         */
+        outToServer = createOutPutStream();
+        inFromServer = createInPutStream();
         System.out.print("Üzenet beolvasása: ");
         sentence = inFromUser.readLine();
         outToServer.writeUTF(sentence + '\n');
@@ -60,16 +73,38 @@ public class ConnectionHandler {
         
         connected=true;
         
-        clientSocket.close();
+        clientSocket.close(); //kapcsolat lezárása
         
         
         
      }
     
     /*
+     * A Socket létrehozását elvégző metódus
+     */
+    private Socket createSocket(String ip, int port) throws UnknownHostException, IOException{
+        return new Socket(ip, port);
+    }
+    
+    /*
+     * A kimeneti adatcsatorna létrehozása
+     */
+    private ObjectOutputStream createOutPutStream() throws IOException {
+        return new ObjectOutputStream(clientSocket.getOutputStream());
+    }
+    
+    /*
+     * A bemeneti adatcsatorna létrehozása
+     */
+    private ObjectInputStream createInPutStream() throws IOException {
+        return new ObjectInputStream(clientSocket.getInputStream());
+    }
+    
+    /*
      * A szerverről való lekapcsolódást elvégző metódus
      */
-    public void disconnect() {
+    public void disconnect() throws IOException {
+        clientSocket.close();
         connected=false;
     }
     

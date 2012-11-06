@@ -72,9 +72,11 @@ public class ConnectionHandler {
         modifiedSentence = inFromServer.readUTF();
         System.out.println("Szerver üzenete: " + modifiedSentence);
         
+         //IDE JÖN AZ A RÉSZ, AMI NEKEM A RUN-BAN VAN
+        
         connected=true;
         
-        clientSocket.close(); //kapcsolat lezárása
+        //clientSocket.close(); //kapcsolat lezárása
         
         
         

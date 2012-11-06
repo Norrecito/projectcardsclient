@@ -65,14 +65,8 @@ public class ConnectionHandler {
          */
         outToServer = createOutPutStream();
         inFromServer = createInPutStream();
-        System.out.print("Üzenet beolvasása: ");
-        sentence = inFromUser.readLine();
-        outToServer.writeUTF(sentence + '\n');
         
-        modifiedSentence = inFromServer.readUTF();
-        System.out.println("Szerver üzenete: " + modifiedSentence);
-        
-         //IDE JÖN AZ A RÉSZ, AMI A RUN-BAN VAN
+        //IDE JÖN AZ A RÉSZ, AMI A RUN-BAN VAN
         
         connected=true;
         

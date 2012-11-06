@@ -5,12 +5,15 @@
 package projectcardsclient;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.Vector;
 
 /**
  *
- * @author Unknown
+ * @author SimpleWorker, Token: Unknown
+ *         MsgTransfer: Norrecito
  */
 public abstract class MsgTransfer {
   private static abstract class SimpleWorker implements Runnable {
@@ -116,6 +119,39 @@ public abstract class MsgTransfer {
         }
 
     }  
+
+/*
+ * Az üzenetküldést intéző szál deklarálása
+ */
+ private SimpleWorker worker;
+ 
+ /*
+  * A kliens socket deklarálása
+  */
+ private Socket clientSocket;
+ 
+ /*
+  * Az üzenetküldést intéző szál leállítása
+  */
+ private void stopWorker(){
+   if(worker != null){
+      worker.stop();
+      worker = null;
+   }  
+ }
+ 
+ public void run() throws IOException{
+     worker = new SimpleWorker(new ObjectOutputStream(clientSocket.getOutputStream())) {
+
+            @Override
+            protected void onException(Exception ex) {
+                /*
+                 * Ha üzenetváltás közben kivétel keletkezik
+                 */
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+     };
+ }
 }
 
 

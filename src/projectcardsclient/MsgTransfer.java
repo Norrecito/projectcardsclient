@@ -7,8 +7,11 @@ package projectcardsclient;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.Socket;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -159,6 +162,34 @@ public class MsgTransfer {
    */
   protected void onStart() {
         ;
+  }
+  
+  /*
+   * Üzenet küldését végző metódus
+   */
+  public void sendMessage(Serializable o) {
+        sendMessage(o, true);
+    }
+  
+  /*
+   * Üzenet küldését végző metódus
+   */
+  public void sendMessage(Serializable o, boolean wait){
+    if(worker != null){
+        Token token = new Token();
+        token.setOutputMsg(o);
+        worker.submitToken(token);
+        if(wait) synchronized(token){
+                try {
+                     token.wait();
+                } catch (InterruptedException ex) {
+                    /*
+                     * Amennyiben kivétel keletkezik
+                     */
+                    Logger.getLogger(MsgTransfer.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+    }  
   }
   
  public void run() {

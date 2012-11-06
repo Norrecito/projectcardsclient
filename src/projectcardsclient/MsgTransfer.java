@@ -10,18 +10,20 @@ import java.util.Vector;
 
 /**
  *
- * @author Norrecito
+ * @author Unknown
  */
 public abstract class MsgTransfer {
   private static abstract class SimpleWorker implements Runnable {
 
-        // begin worker thread control
+        /*
+         * A dolgozó szálkezelés irányításának megkezdése
+         */
         private Thread runThread = null;
         private boolean running = false;
 
         public synchronized void start() {
             if (runThread != null && runThread.isAlive()) {
-                throw new IllegalStateException("worker thread is already running.");
+                throw new IllegalStateException("a dolgozó szál már fut.");
             }
             running = true;
             runThread = new Thread(this);
@@ -35,17 +37,22 @@ public abstract class MsgTransfer {
             }
             runThread = null;
         }
-        // end worker thread control
-
-        // the queue of things to be written
+        /*
+         * A dolgozó szálkezelés irányításának vége
+         */
+       
+        /*
+         * A kiiratandó dolgok sorozata
+         */
         private Vector<Token> queue = new Vector<Token>();
 
         public void submitToken(Token t) {
             queue.add(t);
         }
-
-        // the object output stream.
-        // should be set before our thread is started.
+        /*
+         * A kimeneti objektum csatorna
+         * még a szál megkezdése elött be kell állítani
+         */
         private ObjectOutputStream objectOutput;
 
         public ObjectOutputStream getObjectOutput() {
@@ -73,7 +80,7 @@ public abstract class MsgTransfer {
                         Thread.sleep(20);
                     }
                     catch (InterruptedException ex) {
-                        // empty
+                        // üres
                     }
                     continue;
                 }
@@ -85,11 +92,13 @@ public abstract class MsgTransfer {
                 catch (IOException e) {
                     onException(e);
                 }
-                // notify the thread that submitted this token we are done with it.
+                /*
+                 * Értesíteni a szálat ami küldte ezt a "Token"-t, hogy befejeztük a vele kapcsolatos műveletetek
+                 */
                 synchronized(aToken) {
                     aToken.notify();
                 }
-            } // while
+            } // "while" ciklus végét jelző zárójel
         }
 
     }

@@ -15,7 +15,7 @@ import java.util.Vector;
  * @author SimpleWorker, Token: Unknown
  *         MsgTransfer: Norrecito
  */
-public abstract class MsgTransfer {
+public class MsgTransfer {
   private static abstract class SimpleWorker implements Runnable {
 
         /*
@@ -131,6 +131,13 @@ public abstract class MsgTransfer {
  private Socket clientSocket;
  
  /*
+  * Konstruktor
+  */
+ public MsgTransfer(Socket clientSocket){
+    this.clientSocket = clientSocket; 
+ }
+ 
+ /*
   * Az üzenetküldést intéző szál leállítása
   */
  private void stopWorker(){
@@ -143,7 +150,9 @@ public abstract class MsgTransfer {
   /*
    * Üzenet esetén
    */
-  protected abstract void onMessage(Object o);
+  protected void onMessage(Object o){
+      
+  };
  
   /*
    * Induláskor

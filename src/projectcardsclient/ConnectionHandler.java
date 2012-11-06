@@ -20,6 +20,11 @@ public class ConnectionHandler {
     private Config conf;
     
     /*
+     * Az objektumok küldését végző osztály
+     */
+    MsgTransfer msgtrans;
+    
+    /*
      * Segédváltozók
      */
     private String sentence; //kliens üzeni...
@@ -67,6 +72,8 @@ public class ConnectionHandler {
         inFromServer = createInPutStream();
         
         connected=true; //Változó átálítása, hogy a kapcsolat jelenleg él
+        msgtrans = new MsgTransfer(clientSocket);
+        msgtrans.run();
         //IDE JÖN AZ A RÉSZ, AMI A RUN-BAN VAN
         disconnect();
         

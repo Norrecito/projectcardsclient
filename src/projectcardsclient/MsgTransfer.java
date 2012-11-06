@@ -139,8 +139,24 @@ public abstract class MsgTransfer {
       worker = null;
    }  
  }
+  
+  /*
+   * Üzenet esetén
+   */
+  protected abstract void onMessage(Object o);
  
- public void run() throws IOException{
+  /*
+   * Induláskor
+   */
+  protected void onStart() {
+        ;
+  }
+  
+ public void run() {
+    try{
+    /*
+     * Kimeneti csatorna létrehozása
+     */
      worker = new SimpleWorker(new ObjectOutputStream(clientSocket.getOutputStream())) {
 
             @Override
@@ -152,6 +168,27 @@ public abstract class MsgTransfer {
             }
      };
      worker.start();
+     onStart();
+     /*
+      * Bemeneti csatorna létrehozása
+      */
+     ObjectInputStream in = new ObjectInputStream(clientSocket.getInputStream());
+     /*
+      * Amíg él a kapcsolat dolgozza fel az üzeneteket
+      */
+     while(!clientSocket.isClosed()) {
+        onMessage(in.readObject());
+     }
+    }
+    catch (Exception ex) {
+       /*
+        * Ha valamilyen kivétel keletkezik
+        */
+        System.out.println(ex);
+    }
+    finally{
+        stopWorker(); //A dolgozó leállítása 
+ }
  }
 }
 

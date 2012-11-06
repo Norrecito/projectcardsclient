@@ -66,7 +66,7 @@ public class ConnectionHandler {
         outToServer = createOutPutStream();
         inFromServer = createInPutStream();
         
-        connected=true;
+        connected=true; //Változó átálítása, hogy a kapcsolat jelenleg él
         //IDE JÖN AZ A RÉSZ, AMI A RUN-BAN VAN
         disconnect();
         

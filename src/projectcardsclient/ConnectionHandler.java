@@ -68,6 +68,7 @@ public class ConnectionHandler {
         System.out.print("Üzenet beolvasása: ");
         sentence = inFromUser.readLine();
         outToServer.writeUTF(sentence + '\n');
+        
         modifiedSentence = inFromServer.readUTF();
         System.out.println("Szerver üzenete: " + modifiedSentence);
         

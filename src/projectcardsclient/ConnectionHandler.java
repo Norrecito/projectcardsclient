@@ -66,9 +66,10 @@ public class ConnectionHandler {
         outToServer = createOutPutStream();
         inFromServer = createInPutStream();
         
-        //IDE JÖN AZ A RÉSZ, AMI A RUN-BAN VAN
-        
         connected=true;
+        //IDE JÖN AZ A RÉSZ, AMI A RUN-BAN VAN
+        disconnect();
+        
         
         //clientSocket.close(); //kapcsolat lezárása
         
@@ -101,8 +102,10 @@ public class ConnectionHandler {
      * A szerverről való lekapcsolódást elvégző metódus
      */
     public void disconnect() throws IOException {
-        clientSocket.close();
-        connected=false;
+        clientSocket.close(); //Socket lezárása
+        outToServer.close(); //Kimeneti csatorna lezárása
+        inFromServer.close(); //Bemeneti csatorna lezárása
+        connected=false; //Változó átálítása, hogy a kapcsolat lezárult
     }
     
     /*

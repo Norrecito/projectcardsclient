@@ -151,6 +151,7 @@ public abstract class MsgTransfer {
                 throw new UnsupportedOperationException("Not supported yet.");
             }
      };
+     worker.start();
  }
 }
 

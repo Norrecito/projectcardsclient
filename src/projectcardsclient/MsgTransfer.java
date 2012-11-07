@@ -154,8 +154,8 @@ public class MsgTransfer {
    * Üzenet esetén
    */
   protected void onMessage(Object o){
-      
-  };
+      ;
+  }
  
   /*
    * Induláskor

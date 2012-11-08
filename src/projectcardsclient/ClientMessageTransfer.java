@@ -7,7 +7,7 @@ package projectcardsclient;
 import java.net.Socket;
 
 /**
- *
+ * A klienshez tartozó üzenetek küldését, és fogadását végző osztály
  * @author Norrecito
  */
 public class ClientMessageTransfer extends MsgTransfer {
@@ -25,5 +25,13 @@ public class ClientMessageTransfer extends MsgTransfer {
     @Override
     protected void onMessage(Object o){
         System.out.println(o.toString());  
+    }
+    
+    /*
+     * Indulás esetén
+     */
+    @Override
+    protected void onStart(){
+       sendMessage("kliens üzeni, hogy blah blah"); 
     }
 }

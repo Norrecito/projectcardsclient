@@ -74,15 +74,10 @@ public class ConnectionHandler {
         connected=true; //Változó átálítása, hogy a kapcsolat jelenleg él
         msgtrans = new ClientMessageTransfer(clientSocket);
         msgtrans.run();
-        //IDE JÖN AZ A RÉSZ, AMI A RUN-BAN VAN
+        
         disconnect();
         
-        
-        //clientSocket.close(); //kapcsolat lezárása
-        
-        
-        
-     }
+    }
     
     /*
      * A Socket létrehozását elvégző metódus

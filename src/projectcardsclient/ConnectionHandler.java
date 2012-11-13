@@ -4,7 +4,9 @@
  */
 package projectcardsclient;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -59,9 +61,7 @@ public class ConnectionHandler {
      */
     public void connect(UsrData usrdata) throws UnknownHostException, IOException {
         
-        BufferedReader inFromUser = new BufferedReader( new InputStreamReader(System.in));
-       
-       /*
+        /*
         * Socket létrehozása, és az aktuális konguráció alapján az IP és a port beállítása hozzá
         */
         clientSocket = createSocket(conf.getIP(),conf.getPort());
@@ -74,8 +74,9 @@ public class ConnectionHandler {
         connected=true; //Változó átálítása, hogy a kapcsolat jelenleg él
         msgtrans = new ClientMessageTransfer(clientSocket);
         msgtrans.run();
+        msgtrans.sendMessage(usrdata);
         
-        disconnect();
+        disconnect(); //Lekapcsolódás
         
     }
     

@@ -4,12 +4,14 @@
  */
 package projectcardsclient;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Norrecito
  * A felhasználóhóz tartozó információkat tároló osztály
  */
-public class UsrData {
+public class UsrData implements Serializable {
     
     /*
      * A jelszó és a felhasználónévhez tartozó szövegek deklarálása 

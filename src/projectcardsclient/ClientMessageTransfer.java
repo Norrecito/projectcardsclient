@@ -11,13 +11,25 @@ import java.net.Socket;
  * @author Norrecito
  */
 public class ClientMessageTransfer extends MsgTransfer {
-   
+    
+    /*
+     * A klienshez tartozó felhasználói adatok
+     */
+    UsrData usrdata;
+    
     /*
      * Konstruktor
      */
     public ClientMessageTransfer(Socket clientsocket){
             super(clientsocket);  
         }
+    
+    /*
+     * Beállítja a felhasználói adatokat
+     */
+    public void setUsrData(UsrData usrdata){
+        this.usrdata = usrdata;
+    }
     
     /*
      * Üzenet esetén
@@ -37,7 +49,7 @@ public class ClientMessageTransfer extends MsgTransfer {
      */
     @Override
     protected void onStart(){
-       sendMessage("kliens üzeni, hogy blah blah");
-       
+       sendMessage("<Tesztüzenet a klienstől az indulásról>");
+       sendMessage(usrdata); //A felhasználói adatok elküldése hitelesítésre
     }
 }

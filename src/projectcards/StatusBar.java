@@ -1,5 +1,5 @@
 
-package projectcardsclient;
+package projectcards;
 
 import java.awt.*;
 import javax.swing.*;

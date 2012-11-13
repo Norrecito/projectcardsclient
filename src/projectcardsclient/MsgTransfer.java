@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author SimpleWorker, Token: Unknown
  *         MsgTransfer: Norrecito
  */
-public class MsgTransfer {
+public class MsgTransfer implements Runnable {
   private static abstract class SimpleWorker implements Runnable {
 
         /*

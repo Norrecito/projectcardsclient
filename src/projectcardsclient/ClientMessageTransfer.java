@@ -37,6 +37,7 @@ public class ClientMessageTransfer extends MsgTransfer {
      */
     @Override
     protected void onStart(){
-       sendMessage("kliens üzeni, hogy blah blah"); 
+       sendMessage("kliens üzeni, hogy blah blah");
+       
     }
 }

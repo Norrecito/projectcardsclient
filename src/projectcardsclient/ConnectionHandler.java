@@ -73,10 +73,7 @@ public class ConnectionHandler {
         
         connected=true; //Változó átálítása, hogy a kapcsolat jelenleg él
         msgtrans = new ClientMessageTransfer(clientSocket);
-        msgtrans.run();
-        msgtrans.sendMessage(usrdata); //Elküldi a hitelesítésre váró felhasználói adatokat
-        
-        disconnect(); //Lekapcsolódás
+        new Thread(msgtrans).start();
         
     }
     

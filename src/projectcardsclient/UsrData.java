@@ -5,6 +5,7 @@
 package projectcardsclient;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,6 +19,12 @@ public class UsrData implements Serializable {
      */
     private String Username;
     private String Password;
+    
+    /*
+     * A felhasználóhóz tartozó karakterlista
+     * alap esetben "null", a szerver fogja visszaadni a teljes listát a hitelesítést követően
+     */
+    private ArrayList<Character> charList;
 
     /*
      * Az első konstruktor
@@ -66,5 +73,18 @@ public class UsrData implements Serializable {
         this.Username = Username;
     }
     
+    /*
+     * Karakterlista lekérése
+     */
+    public ArrayList<Character> getCharList() {
+        return charList;
+    }
+    
+    /*
+     * Karakterlista beállítása
+     */
+    public void setCharList(ArrayList<Character> charList) {
+        this.charList = charList;
+    }
     
 }

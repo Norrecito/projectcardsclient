@@ -24,7 +24,12 @@ public class ClientMessageTransfer extends MsgTransfer {
      */
     @Override
     protected void onMessage(Object o){
-        System.out.println(o.toString());  
+         if(o instanceof String){
+             //Amenyiben az üzenet String, kiírja a konzolba
+             System.out.println(o.toString());    
+         } else if (o instanceof Character){
+             //Amennyiben az üzenet egy "játékos karakter" objektum, frissíti a megfelelő karaktert
+         } 
     }
     
     /*

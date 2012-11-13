@@ -195,7 +195,7 @@ public class MsgTransfer {
  public void run() {
     try{
     /*
-     * Kimeneti csatorna létrehozása
+     * dolgozó létrehozása
      */
      worker = new SimpleWorker(new ObjectOutputStream(clientSocket.getOutputStream())) {
 

@@ -36,11 +36,20 @@ public class Main {
     public static Login loginwindow;
     
     /*
+     * A felhasználóval kapcsolatos információkat tároló objektum
+     */
+    private static UsrData usrdata;
+    
+    /*
      * A szerverhez való kapcsolódást kezdeményező metódus
      */
     public static void connectToServer(String username, String password) {
+        
+        usrdata =new UsrData(username,password); //A felhasználó nevének, és jelszavának eltárolólása az erre kijelölt objektumba
+        
         try {
-            conhandler.connect(username,password); //Megkéri a kapcsolatkiépítéséért felelős osztály, hogy kezdeményezze meg a kapcsolódást
+            conhandler.connect(usrdata); //Megkéri a kapcsolatkiépítéséért felelős osztály, hogy kezdeményezze meg a kapcsolódást
+            isConnecting=true; //A kapcsolat jelenleg él
             /*
              * Amennyiben sikerült kapcsolódni üzen a "Login" osztálynak hogy a folyamatokat jelző dialóguson állítsa sikeresre a kapcsolódást
              */
@@ -68,10 +77,10 @@ public class Main {
     public static void disconnectFromServer(){
         try {
             conhandler.disconnect(); //Megkéri a kapcsolatkiépítéséért felelős osztály, hogy szüntesse meg a fenálló kapcsolatot
+            isConnecting=false; //A kapcsolat már nem él
         } catch (IOException ex) {
             /*
              * "IO" kivétel kezelése
-             * Üzen a "Login" osztálynak hogy az a folyamatokat jelző dialógusán állítsa a kapcsolódást sikertelenre
              */
             loginwindow.exceptionIO();
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -81,8 +90,11 @@ public class Main {
     /*
      * A jelenlegi kapcsolat bontását és az újrakapcsolodást elvégző metódus
      */
-    public static void reconnectToServer(){
-        
+    public static void reconnectToServer(String username, String password){
+       if(isConnecting){
+          disconnectFromServer();
+          connectToServer(username, password);
+       } 
     }
     
     /**

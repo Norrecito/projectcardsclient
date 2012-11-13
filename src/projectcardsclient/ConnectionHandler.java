@@ -57,7 +57,7 @@ public class ConnectionHandler {
      * A szerverhez való kapcsolódást elvégző metódus
      * egyenlőre csak erőssen teszt jellegű
      */
-    public void connect(String username, String password) throws UnknownHostException, IOException {
+    public void connect(UsrData usrdata) throws UnknownHostException, IOException {
         
         BufferedReader inFromUser = new BufferedReader( new InputStreamReader(System.in));
        

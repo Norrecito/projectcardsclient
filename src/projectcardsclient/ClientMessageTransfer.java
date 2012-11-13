@@ -27,8 +27,8 @@ public class ClientMessageTransfer extends MsgTransfer {
          if(o instanceof String){
              //Amenyiben az üzenet String, kiírja a konzolba
              System.out.println(o.toString());    
-         } else if (o instanceof Character){
-             //Amennyiben az üzenet egy "játékos karakter" objektum, frissíti a megfelelő karaktert
+         } else if (o instanceof UsrData){
+             //Amennyiben az üzenet egy "játékos adatok" objektum, frissíti a megfelelő karaktert
          } 
     }
     

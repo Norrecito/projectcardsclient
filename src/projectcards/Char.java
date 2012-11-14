@@ -11,7 +11,7 @@ import java.awt.Image;
  * 
  * @author Norrecito
  */
-public class Character {
+public class Char {
     
     /*
      * A karakter neve
@@ -27,12 +27,12 @@ public class Character {
      * A karakter jelenlegi osztálya
      * szándékosan van egy "s"-el írva...
      */
-    private String clas;
+    private Cast cast;
     
     /*
      * A karakterhez tartozó avatar
      */
-    private byte[] avatar;
+    private Avatar avatar;
     
     /*
      * A jelenlegi aktuális szinthez tartozó megszerzett tapasztalatpont

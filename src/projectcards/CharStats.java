@@ -10,7 +10,7 @@ package projectcards;
  * 
  * @author Norrecito
  */
-public class CharacterStatistics {
+public class CharStats {
     
     /*
      * Általános (General)
@@ -20,7 +20,8 @@ public class CharacterStatistics {
      * @param totalgold:    az összes idáig összegyüjtött arany
      * @param timeplayed:   az idáig lejátszott idő a karakterrel (órában)
      */
-    private int kills=0, deaths=0, totalgold=0, timeplayed=0;
+    private int kills=0, deaths=0, totalgold=0; 
+    private long timeplayed=0;
     
     /*
      * Harc (Combat)

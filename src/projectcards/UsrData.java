@@ -24,8 +24,8 @@ public class UsrData implements Serializable {
      * A felhasználóhóz tartozó karakterlista
      * alap esetben "null", a szerver fogja visszaadni a teljes listát a hitelesítést követően
      */
-    private ArrayList<Character> charList;
-
+    private ArrayList<Char> chars;
+    
     /*
      * Az első konstruktor
      * Minden értéke alapértelmezetten null
@@ -43,6 +43,7 @@ public class UsrData implements Serializable {
     public UsrData(String Username, String Password){
       this.Username = Username;
       this.Password = Password;
+      
     }
     
     /*
@@ -76,15 +77,15 @@ public class UsrData implements Serializable {
     /*
      * Karakterlista lekérése
      */
-    public ArrayList<Character> getCharList() {
-        return charList;
+    public ArrayList<Char> getCharList() {
+        return chars;
     }
     
     /*
      * Karakterlista beállítása
      */
-    public void setCharList(ArrayList<Character> charList) {
-        this.charList = charList;
+    public void setCharList(ArrayList<Char> charList) {
+        this.chars = charList;
     }
     
 }

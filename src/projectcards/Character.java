@@ -32,7 +32,7 @@ public class Character {
     /*
      * A karakterhez tartozó avatar
      */
-    private Image avatar;
+    private byte[] avatar;
     
     /*
      * A jelenlegi aktuális szinthez tartozó megszerzett tapasztalatpont

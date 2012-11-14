@@ -45,11 +45,11 @@ public class Character {
     private int totalxp;
     
     /*
-     * A statisztikáhóz szükséges alapvető változók deklarálása
-     * - STR: Strenght     = Erő
-     * - INT: Intelligence = Intelligencia
-     * - DEX: Dexterity    = Ügyesség
-     * - VIT: Vitality     = Életerő
+     * A statisztikáhóz szükséges alapvető változók:
+     * @param STR: Strenght     = Erő
+     * @param INT: Intelligence = Intelligencia
+     * @param DEX: Dexterity    = Ügyesség
+     * @param VIT: Vitality     = Életerő
      */
     private int STR, INT, DEX, VIT;
 }

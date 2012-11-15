@@ -4,8 +4,6 @@
  */
 package projectcards;
 
-import java.awt.Image;
-
 /**
  * Az általános karakter osztály
  * 

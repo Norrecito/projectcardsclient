@@ -77,14 +77,14 @@ public class UsrData implements Serializable {
     /*
      * Karakterlista lekérése
      */
-    public List<Char> getCharList() {
+    public List<Char> getChars() {
         return chars;
     }
     
     /*
      * Karakterlista beállítása
      */
-    public void setCharList(List<Char> charList) {
+    public void setChars(List<Char> charList) {
         this.chars = charList;
     }
     

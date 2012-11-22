@@ -60,7 +60,7 @@ public class Login extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     dialogServAuth.setVisible(true);
-                    Main.connectToServer(tfUsername.getText(), pfPassword.getPassword().toString());
+                    Main.connectToServer(tfUsername.getText(),new String(pfPassword.getPassword()));
                 }
             });
         }
